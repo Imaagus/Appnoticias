@@ -25,12 +25,10 @@ class Inicio : AppCompatActivity() {
         btnRegistrarse.setOnClickListener {
             val intent = Intent(this, Registro::class.java)
             startActivity(intent)
-            finish()
         }
         btnIniciarSesion.setOnClickListener {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
-            finish()
         }
     }
 }
