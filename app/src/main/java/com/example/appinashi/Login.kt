@@ -31,6 +31,7 @@ class Login : AppCompatActivity() {
             Toast.makeText(this, "Iniciaste sesion con exito", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

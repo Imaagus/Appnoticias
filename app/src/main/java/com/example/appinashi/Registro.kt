@@ -48,6 +48,7 @@ class Registro : AppCompatActivity() {
                     Toast.makeText(this, "Tu usuario fue creado con exito", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }else{
                     tvError.text = "Las contraseñas no coinciden"
                 }
