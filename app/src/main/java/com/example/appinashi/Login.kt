@@ -28,11 +28,22 @@ class Login : AppCompatActivity() {
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
 
         btnIniciarSesion.setOnClickListener {
-            Toast.makeText(this, "Iniciaste sesion con exito", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-
+            Thread {
+                val usuario = AppDataBase.getDataBase(applicationContext).usuarioDao().findByNombre(etNombreDeUsuario.text.toString())
+                if (usuario != null && usuario.contraseña == etContraseña.text.toString()) {
+                    runOnUiThread {
+                        Toast.makeText(this, "Iniciaste sesión con éxito", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                } else {
+                    runOnUiThread {
+                        Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }.start()
         }
+
     }
 }

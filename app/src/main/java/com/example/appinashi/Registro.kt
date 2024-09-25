@@ -40,19 +40,29 @@ class Registro : AppCompatActivity() {
         tvError = findViewById(R.id.tvError)
 
         btnCrearUsuario.setOnClickListener {
-            if(etUsuario.text.toString().isEmpty() || etEmail.text.toString().isEmpty() || etContraseña.text.toString().isEmpty() || etConfirmContraseña.text.toString().isEmpty()){
+            if (etUsuario.text.toString().isEmpty() || etEmail.text.toString().isEmpty() || etContraseña.text.toString().isEmpty() || etConfirmContraseña.text.toString().isEmpty()) {
                 tvError.text = "Por favor completar todos los datos"
-            }else{
-                if(etContraseña.text.toString().equals(etConfirmContraseña.text.toString())){
+            } else {
+                if (etContraseña.text.toString() == etConfirmContraseña.text.toString()) {
                     tvError.text = ""
-                    Toast.makeText(this, "Tu usuario fue creado con exito", Toast.LENGTH_SHORT).show()
+
+                    // Crear nuevo usuario
+                    val nuevoUsuario = Usuario(nombre = etUsuario.text.toString(), email = etEmail.text.toString(), contraseña = etContraseña.text.toString())
+
+                    // Agregar el usuario a la base de datos
+                    Thread {
+                        AppDataBase.getDataBase(applicationContext).usuarioDao().insert(nuevoUsuario)
+                    }.start()
+
+                    Toast.makeText(this, "Tu usuario fue creado con éxito", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
-                }else{
+                } else {
                     tvError.text = "Las contraseñas no coinciden"
                 }
             }
         }
+
     }
 }

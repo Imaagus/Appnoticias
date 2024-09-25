@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Appinashi</string>
-    <string name="titulo">Categoria noticias</string>
+    <string name="titulo">Noticias</string>
+    <string name="volver">Volver\n</string>
 </resources>
