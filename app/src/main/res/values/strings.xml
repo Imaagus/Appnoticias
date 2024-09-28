@@ -2,4 +2,7 @@
     <string name="app_name">Appinashi</string>
     <string name="titulo">Noticias</string>
     <string name="volver">Volver\n</string>
+    <string name="nombre_usuario">NOMBRE</string>
+    <string name="password_usuario">PASSWORD</string>
+    <string name="sp_credenciales">CREDENCIALES</string>
 </resources>

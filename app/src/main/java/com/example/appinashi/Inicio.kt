@@ -22,6 +22,17 @@ class Inicio : AppCompatActivity() {
         }
         btnRegistrarse = findViewById(R.id.btnRegistrarse)
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
+
+        var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+        var usuarioGuardado = preferencias.getString(resources.getString(R.string.nombre_usuario),"")
+        var passwordGuardado = preferencias.getString(resources.getString(R.string.password_usuario),"")
+
+        if(usuarioGuardado!="" && passwordGuardado!=""){
+            if(usuarioGuardado!=null){
+                StartMainActivity()
+            }
+        }
+
         btnRegistrarse.setOnClickListener {
             val intent = Intent(this, Registro::class.java)
             startActivity(intent)
@@ -30,5 +41,10 @@ class Inicio : AppCompatActivity() {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
+    }
+    private fun StartMainActivity(){
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

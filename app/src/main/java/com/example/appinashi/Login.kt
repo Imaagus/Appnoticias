@@ -3,6 +3,7 @@ package com.example.appinashi
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,7 @@ class Login : AppCompatActivity() {
     lateinit var etNombreDeUsuario: EditText
     lateinit var etContraseña: EditText
     lateinit var btnIniciarSesion: Button
+    lateinit var cbRecordarUsuario: CheckBox
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,6 +28,8 @@ class Login : AppCompatActivity() {
         etNombreDeUsuario = findViewById(R.id.etNombreDeUsuario)
         etContraseña = findViewById(R.id.etContraseña)
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
+        cbRecordarUsuario = findViewById(R.id.cbRecordarUsuario)
+
 
         btnIniciarSesion.setOnClickListener {
             Thread {
@@ -33,9 +37,12 @@ class Login : AppCompatActivity() {
                 if (usuario != null && usuario.contraseña == etContraseña.text.toString()) {
                     runOnUiThread {
                         Toast.makeText(this, "Iniciaste sesión con éxito", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
+                        if(cbRecordarUsuario.isChecked){
+                            var preferenias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+                            preferenias.edit().putString(resources.getString(R.string.nombre_usuario),usuario.nombre).apply()
+                            preferenias.edit().putString(resources.getString(R.string.password_usuario),usuario.contraseña).apply()
+                        }
+                        StartMainActivity()
                     }
                 } else {
                     runOnUiThread {
@@ -44,6 +51,10 @@ class Login : AppCompatActivity() {
                 }
             }.start()
         }
-
+    }
+    private fun StartMainActivity(){
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

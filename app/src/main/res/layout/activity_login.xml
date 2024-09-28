@@ -48,12 +48,19 @@
         android:layout_marginHorizontal="50sp"
         android:inputType="textPassword"
         />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recordar Usuario"
+        android:id="@+id/cbRecordarUsuario"/>
+
     <Button
         android:id="@+id/btnIniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="70dp"
         android:layout_marginHorizontal="50sp"
         android:text="Iniciar sesion"
         android:backgroundTint="@color/principal"/>
