@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.util.PatternsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -43,26 +44,29 @@ class Registro : AppCompatActivity() {
             if (etUsuario.text.toString().isEmpty() || etEmail.text.toString().isEmpty() || etContraseña.text.toString().isEmpty() || etConfirmContraseña.text.toString().isEmpty()) {
                 tvError.text = "Por favor completar todos los datos"
             } else {
-                if (etContraseña.text.toString() == etConfirmContraseña.text.toString()) {
-                    tvError.text = ""
+                if(PatternsCompat.EMAIL_ADDRESS.matcher(etEmail.text.toString()).matches()){
+                    if (etContraseña.text.toString() == etConfirmContraseña.text.toString()) {
+                        tvError.text = ""
 
-                    // Crear nuevo usuario
-                    val nuevoUsuario = Usuario(nombre = etUsuario.text.toString(), email = etEmail.text.toString(), contraseña = etContraseña.text.toString())
+                        // Crear nuevo usuario
+                        val nuevoUsuario = Usuario(nombre = etUsuario.text.toString(), email = etEmail.text.toString(), contraseña = etContraseña.text.toString())
 
-                    // Agregar el usuario a la base de datos
-                    Thread {
-                        AppDataBase.getDataBase(applicationContext).usuarioDao().insert(nuevoUsuario)
-                    }.start()
+                        // Agregar el usuario a la base de datos
+                        Thread {
+                            AppDataBase.getDataBase(applicationContext).usuarioDao().insert(nuevoUsuario)
+                        }.start()
 
-                    Toast.makeText(this, "Tu usuario fue creado con éxito", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    tvError.text = "Las contraseñas no coinciden"
+                        Toast.makeText(this, "Tu usuario fue creado con éxito", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        tvError.text = "Las contraseñas no coinciden"
+                    }
+                }else {
+                    tvError.text = "El email no es valido"
                 }
             }
         }
-
     }
 }
