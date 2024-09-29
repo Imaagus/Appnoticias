@@ -64,4 +64,14 @@
         android:layout_marginHorizontal="50sp"
         android:text="Iniciar sesion"
         android:backgroundTint="@color/principal"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:id="@+id/tvError"
+        android:textColor="@color/error"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        />
+
 </LinearLayout>

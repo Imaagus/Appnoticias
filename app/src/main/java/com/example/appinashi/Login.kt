@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +16,9 @@ class Login : AppCompatActivity() {
     lateinit var etNombreDeUsuario: EditText
     lateinit var etContraseña: EditText
     lateinit var btnIniciarSesion: Button
+    lateinit var tvError: TextView
     lateinit var cbRecordarUsuario: CheckBox
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -29,13 +32,13 @@ class Login : AppCompatActivity() {
         etContraseña = findViewById(R.id.etContraseña)
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
         cbRecordarUsuario = findViewById(R.id.cbRecordarUsuario)
+        tvError = findViewById(R.id.tvError)
 
 
         btnIniciarSesion.setOnClickListener {
-            Thread {
                 val usuario = AppDataBase.getDataBase(applicationContext).usuarioDao().findByNombre(etNombreDeUsuario.text.toString())
                 if (usuario != null && usuario.contraseña == etContraseña.text.toString()) {
-                    runOnUiThread {
+                    tvError.text = ""
                         Toast.makeText(this, "Iniciaste sesión con éxito", Toast.LENGTH_SHORT).show()
                         if(cbRecordarUsuario.isChecked){
                             var preferenias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
@@ -43,13 +46,10 @@ class Login : AppCompatActivity() {
                             preferenias.edit().putString(resources.getString(R.string.password_usuario),usuario.contraseña).apply()
                         }
                         StartMainActivity()
-                    }
                 } else {
-                    runOnUiThread {
-                        Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-                    }
+                    tvError.text = "Este usuario no existe"
                 }
-            }.start()
+
         }
     }
     private fun StartMainActivity(){

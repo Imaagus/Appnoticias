@@ -52,9 +52,7 @@ class Registro : AppCompatActivity() {
                         val nuevoUsuario = Usuario(nombre = etUsuario.text.toString(), email = etEmail.text.toString(), contraseña = etContraseña.text.toString())
 
                         // Agregar el usuario a la base de datos
-                        Thread {
-                            AppDataBase.getDataBase(applicationContext).usuarioDao().insert(nuevoUsuario)
-                        }.start()
+                        AppDataBase.getDataBase(applicationContext).usuarioDao().insert(nuevoUsuario)
 
                         Toast.makeText(this, "Tu usuario fue creado con éxito", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
