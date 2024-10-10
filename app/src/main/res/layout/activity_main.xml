@@ -7,23 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
+
     <include
         android:id="@+id/toolBar"
-        layout="@layout/primary_layout"
-        />
-
+        layout="@layout/primary_layout" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <TextView
             android:id="@+id/tvRestService"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:textSize="18sp">
-        </TextView>
+            android:textSize="18sp"
+            android:text="Cargando datos..."/>
     </ScrollView>
 
 </LinearLayout>
