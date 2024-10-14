@@ -6,4 +6,9 @@
         android:title="Categorias de noticias"
         app:showAsAction="never"
         />
+    <item
+        android:id="@+id/itemCerrarSesion"
+        android:title="Cerrar sesion"
+        app:showAsAction="never"
+        />
 </menu>

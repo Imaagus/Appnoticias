@@ -1,6 +1,7 @@
 package com.example.appinashi
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -81,6 +82,11 @@ class MainActivity : AppCompatActivity() {
         if (item.itemId == R.id.itemListado) {
             val intent = Intent(this, ListadoNoticias::class.java)
             startActivity(intent)
+        }
+        if (item.itemId == R.id.itemCerrarSesion) {
+            val intent = Intent(this, Inicio::class.java)
+            startActivity(intent)
+            finish()
         }
         return super.onOptionsItemSelected(item)
     }
