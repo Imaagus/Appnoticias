@@ -2,12 +2,15 @@ package com.example.appinashi
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.util.PatternsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -22,6 +25,8 @@ class Registro : AppCompatActivity() {
     lateinit var etEmail: EditText
     lateinit var btnCrearUsuario: Button
     lateinit var tvError: TextView
+    lateinit var toolBar: Toolbar
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +44,10 @@ class Registro : AppCompatActivity() {
         etConfirmContraseña = findViewById(R.id.etConfirmContraseña)
         btnCrearUsuario = findViewById(R.id.btnCrearUsuario)
         tvError = findViewById(R.id.tvError)
+
+        toolBar = findViewById(R.id.toolBar)
+        setSupportActionBar(toolBar)
+        supportActionBar!!.title = resources.getString(R.string.crear_usuario)
 
         btnCrearUsuario.setOnClickListener {
             if (etUsuario.text.toString().isEmpty() || etEmail.text.toString().isEmpty() || etContraseña.text.toString().isEmpty() || etConfirmContraseña.text.toString().isEmpty()) {
@@ -66,5 +75,17 @@ class Registro : AppCompatActivity() {
                 }
             }
         }
+
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_back, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.item_volver){
+            intent = Intent(this,Inicio::class.java)
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

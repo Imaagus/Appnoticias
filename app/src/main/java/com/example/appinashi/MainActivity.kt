@@ -84,10 +84,19 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         if (item.itemId == R.id.itemCerrarSesion) {
+            cerrarSesion()
             val intent = Intent(this, Inicio::class.java)
             startActivity(intent)
-            finish()
+            finishAffinity()
+
         }
         return super.onOptionsItemSelected(item)
+    }
+    fun cerrarSesion() {
+        val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+        val editor = preferencias.edit()
+        editor.remove(resources.getString(R.string.nombre_usuario))
+        editor.remove(resources.getString(R.string.password_usuario))
+        editor.apply()  // Aplica los cambios
     }
 }

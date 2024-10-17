@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Appinashi</string>
     <string name="titulo">Noticias</string>
+    <string name="crear_usuario">Crear Usuario</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="volver">Volver\n</string>
     <string name="nombre_usuario">NOMBRE</string>
     <string name="password_usuario">PASSWORD</string>
