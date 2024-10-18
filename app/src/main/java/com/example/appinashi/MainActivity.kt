@@ -1,11 +1,11 @@
 package com.example.appinashi
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +19,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     private lateinit var toolBar: Toolbar
     private lateinit var tvResetService: TextView
+    private lateinit var tvDescripcion: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,18 +34,19 @@ class MainActivity : AppCompatActivity() {
 
         toolBar = findViewById(R.id.toolBar)
         setSupportActionBar(toolBar)
-        supportActionBar?.title = resources.getString(R.string.titulo)
+        supportActionBar?.title = resources.getString(R.string.tituloUltimasNoticias)
         tvResetService = findViewById(R.id.tvRestService)
+        tvDescripcion = findViewById(R.id.tvDescrip)
 
-        tvResetService.text = "Cargando datos..."
 
         // Llamada a la API
-        val accessKey = "1f196924ee3db7bcd5de96a6ba5945f0" //  clave de acceso
-        val keywords = "tennis"
-        val countries = "us,gb,de"
+        val accessKey = "1f196924ee3db7bcd5de96a6ba5945f0"
+        val countries = "ar"
+        val language = "es"
+        val category = "general"
 
         val api = RetroFitClient.retrofit.create(PostEndPoint::class.java)
-        val callPost = api.getPosts(accessKey, keywords, countries)
+        val callPost = api.getPosts(accessKey, category, countries, language)
 
         // Ejecuta la llamada
         callPost.enqueue(object : Callback<ResponseData> {
@@ -52,10 +54,21 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body() != null) {
                     val posts = response.body()!!.data // Obtiene la lista de Post desde la respuesta
                     if (posts.isNotEmpty()) {
-                        // Mostrar solo los titulos de las noticias
-                        val titles = posts.joinToString("\n") { it.title }
-                        tvResetService.text = titles
-                        Log.d("Response", "Posts: $titles")
+                        val linearLayoutContent = findViewById<LinearLayout>(R.id.linearLayoutContent)
+                        posts.forEach { post ->
+                            val titleTextView = TextView(this@MainActivity)
+                            titleTextView.text = "● ${post.title}"
+                            titleTextView.textSize = 22f
+                            titleTextView.setPadding(16, 16, 16, 8)
+
+                            val descriptionTextView = TextView(this@MainActivity)
+                            descriptionTextView.text = post.description ?: "Descripción no disponible"
+                            descriptionTextView.textSize = 16f
+                            descriptionTextView.setPadding(16, 8, 16, 16)
+
+                            linearLayoutContent.addView(titleTextView)
+                            linearLayoutContent.addView(descriptionTextView)
+                        }
                     } else {
                         Log.e("Response", "No hay posts disponibles.")
                         tvResetService.text = "No hay posts disponibles."
@@ -88,15 +101,15 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Inicio::class.java)
             startActivity(intent)
             finishAffinity()
-
         }
         return super.onOptionsItemSelected(item)
     }
-    fun cerrarSesion() {
+
+    private fun cerrarSesion() {
         val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
         val editor = preferencias.edit()
         editor.remove(resources.getString(R.string.nombre_usuario))
         editor.remove(resources.getString(R.string.password_usuario))
-        editor.apply()  // Aplica los cambios
+        editor.apply()
     }
 }

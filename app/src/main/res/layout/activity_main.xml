@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@color/fondo"
-    >
+    android:background="@color/fondo">
 
     <include
         android:id="@+id/toolBar"
@@ -19,13 +17,27 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/tvRestService"
+        <LinearLayout
+            android:id="@+id/linearLayoutContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:textSize="18sp"
-            android:text="Cargando datos..."/>
+            android:orientation="vertical"
+            android:padding="0dp">
+
+            <TextView
+                android:id="@+id/tvRestService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvDescrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

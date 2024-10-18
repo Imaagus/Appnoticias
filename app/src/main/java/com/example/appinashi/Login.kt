@@ -45,7 +45,7 @@ class Login : AppCompatActivity() {
             insets
         }
 
-        // Crear el canal de notificación
+        // Crear el canal de notificacion
         CreateChannel()
 
         toolBar = findViewById(R.id.toolBar)
@@ -78,7 +78,7 @@ class Login : AppCompatActivity() {
         }
     }
 
-    // Método para iniciar la MainActivity después del login
+
     private fun StartMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -98,7 +98,7 @@ class Login : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    // Método para crear el canal de notificación en API 26 o superior
+    // Crear el canal de notificacion
     fun CreateChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
@@ -113,16 +113,16 @@ class Login : AppCompatActivity() {
         }
     }
 
-    // Método para crear la notificación
+    // Crear la notificación
     fun createNotification() {
         val builder = NotificationCompat.Builder(this, MY_CHANNEL_ID)
             .setContentTitle("Recordar usuario activado")
             .setContentText("Usted ha activado correctamente la función de recordar usuario")
-            .setSmallIcon(R.drawable.logo_noticias) // Asegúrate de que el ícono sea blanco y transparente
-            .setPriority(NotificationCompat.PRIORITY_HIGH) // Usa una prioridad alta para asegurar que se muestre
-            .setAutoCancel(true) // Opcional, hace que la notificación se elimine al tocarla
+            .setSmallIcon(R.drawable.logo_noticias)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
 
-        // Asegúrate de que el canal esté correctamente creado
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 MY_CHANNEL_ID,
@@ -135,15 +135,13 @@ class Login : AppCompatActivity() {
             notificationManager.createNotificationChannel(channel)
         }
 
-        // Verificación de permisos para API 33 o superior
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
             checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // Si no tienes el permiso, lo solicita
             requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 101)
         } else {
-            // Manejador de notificaciones
             val notificationManager = NotificationManagerCompat.from(this)
-            notificationManager.notify(1, builder.build()) // Envía la notificación
+            notificationManager.notify(1, builder.build())
         }
     }
 }
