@@ -4,10 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#D51C1C">
+    android:background="@color/fondo">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Este es mi segundo fragmento"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnPrueba"
+        android:text="Prueba"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvPrueba"/>
 
 </LinearLayout>
