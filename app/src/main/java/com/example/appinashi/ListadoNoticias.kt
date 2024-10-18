@@ -9,11 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appinashi.fragmentos.FragmentoBtns
+import com.example.appinashi.fragmentos.FragmentoBtnsInterfaz
 
-class ListadoNoticias : AppCompatActivity() {
-    lateinit var rvNoticias: RecyclerView
-    lateinit var noticaAdapter: NoticiaAdapter
+class ListadoNoticias : AppCompatActivity(), FragmentoBtnsInterfaz {
     lateinit var toolBar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,23 +28,12 @@ class ListadoNoticias : AppCompatActivity() {
         }
         toolBar = findViewById(R.id.toolBar)
         setSupportActionBar(toolBar)
-        supportActionBar!!.title = resources.getString(R.string.titulo)
+        supportActionBar!!.title = resources.getString(R.string.categoriaNoticias)
+        val primerFragmento = supportFragmentManager
+            .findFragmentById(R.id.contenedor_primer_fragmento) as? FragmentoBtns
+        primerFragmento?.listener = this
+    }
 
-        rvNoticias= findViewById(R.id.recyclerNot)
-        noticaAdapter= NoticiaAdapter(getNoticias(),this)
-        rvNoticias.adapter = noticaAdapter
-    }
-    private fun getNoticias(): MutableList<Noticia>{
-        var examenes: MutableList<Noticia> = ArrayList()
-        examenes.add(Noticia(1, "Deportes"))
-        examenes.add(Noticia(2, "Comunicacion"))
-        examenes.add(Noticia(3, "Musica"))
-        examenes.add(Noticia(4, "Media"))
-        examenes.add(Noticia(5, "Politicas"))
-        examenes.add(Noticia(6, "Economicas"))
-        examenes.add(Noticia(7, "Ultimas noticias"))
-        return examenes
-    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_back, menu)
         return super.onCreateOptionsMenu(menu)
@@ -54,5 +44,11 @@ class ListadoNoticias : AppCompatActivity() {
             startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun mostrarContenido(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.contenedor_segundo_fragmento, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

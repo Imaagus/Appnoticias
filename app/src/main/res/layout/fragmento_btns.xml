@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal"
+    android:background="@color/principal">
+
+    <ImageButton
+        android:id="@+id/btnFragmento1"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:backgroundTint="#D10000" />
+    <ImageButton
+        android:id="@+id/btnFragmento2"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:backgroundTint="#0018D1" />
+    <ImageButton
+        android:id="@+id/btnFragmento3"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:backgroundTint="#5BD100" />
+    <ImageButton
+        android:id="@+id/btnFragmento4"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:backgroundTint="#D100AE" />
+    <ImageButton
+        android:id="@+id/btnFragmento5"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:backgroundTint="#D1AE00" />
+    <ImageButton
+        android:id="@+id/btnFragmento6"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:backgroundTint="#00D199" />
+
+
+
+</LinearLayout>
