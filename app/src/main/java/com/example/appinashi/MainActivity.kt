@@ -15,11 +15,14 @@ import androidx.core.view.WindowInsetsCompat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.os.Handler
+import android.os.Looper
 
 class MainActivity : AppCompatActivity() {
     private lateinit var toolBar: Toolbar
     private lateinit var tvResetService: TextView
     private lateinit var tvDescripcion: TextView
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,41 +52,45 @@ class MainActivity : AppCompatActivity() {
         val callPost = api.getPosts(accessKey, category, countries, language)
 
         // Ejecuta la llamada
-        callPost.enqueue(object : Callback<ResponseData> {
-            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
-                if (response.isSuccessful && response.body() != null) {
-                    val posts = response.body()!!.data // Obtiene la lista de Post desde la respuesta
-                    if (posts.isNotEmpty()) {
-                        val linearLayoutContent = findViewById<LinearLayout>(R.id.linearLayoutContent)
-                        posts.forEach { post ->
-                            val titleTextView = TextView(this@MainActivity)
-                            titleTextView.text = "● ${post.title}"
-                            titleTextView.textSize = 22f
-                            titleTextView.setPadding(16, 16, 16, 8)
+        Thread {
+            try{
+                val response = callPost.execute()
 
-                            val descriptionTextView = TextView(this@MainActivity)
-                            descriptionTextView.text = post.description ?: "Descripción no disponible"
-                            descriptionTextView.textSize = 16f
-                            descriptionTextView.setPadding(16, 8, 16, 16)
+                handler.post {
+                    if (response.isSuccessful && response.body() != null) {
+                        val posts = response.body()!!.data // Obtiene la lista de Post desde la respuesta
+                        if (posts.isNotEmpty()) {
+                            val linearLayoutContent = findViewById<LinearLayout>(R.id.linearLayoutContent)
+                            posts.forEach { post ->
+                                val titleTextView = TextView(this@MainActivity)
+                                titleTextView.text = "● ${post.title}"
+                                titleTextView.textSize = 22f
+                                titleTextView.setPadding(16, 16, 16, 8)
 
-                            linearLayoutContent.addView(titleTextView)
-                            linearLayoutContent.addView(descriptionTextView)
+                                val descriptionTextView = TextView(this@MainActivity)
+                                descriptionTextView.text = post.description ?: "Descripción no disponible"
+                                descriptionTextView.textSize = 16f
+                                descriptionTextView.setPadding(16, 8, 16, 16)
+
+                                linearLayoutContent.addView(titleTextView)
+                                linearLayoutContent.addView(descriptionTextView)
+                            }
+                        } else {
+                            Log.e("Response", "No hay posts disponibles.")
+                            tvResetService.text = "No hay posts disponibles."
                         }
                     } else {
-                        Log.e("Response", "No hay posts disponibles.")
-                        tvResetService.text = "No hay posts disponibles."
+                        Log.e("Response", "Error en la respuesta: ${response.code()} - ${response.message()}")
+                        tvResetService.text = "Error: ${response.code()} - ${response.message()}"
                     }
-                } else {
-                    Log.e("Response", "Error en la respuesta: ${response.code()} - ${response.message()}")
-                    tvResetService.text = "Error: ${response.code()} - ${response.message()}"
+                }
+            } catch(e: Exception){
+                handler.post{
+                    Log.e("ERROR", e.message ?: "")
+                    tvResetService.text = "ERROR : ${e.message}"
                 }
             }
-
-            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
-                Log.e("ERROR", t.message ?: "")
-                tvResetService.text = "Error: ${t.message}"
-            }
-        })
+        }.start()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
