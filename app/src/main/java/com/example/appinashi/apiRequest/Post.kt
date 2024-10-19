@@ -1,4 +1,4 @@
-package com.example.appinashi
+package com.example.appinashi.apiRequest
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)

@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.appinashi.PostEndPoint
+import com.example.appinashi.apiRequest.PostEndPoint
 import com.example.appinashi.R
-import com.example.appinashi.ResponseData
-import com.example.appinashi.RetroFitClient
+import com.example.appinashi.apiRequest.ResponseData
+import com.example.appinashi.apiRequest.RetroFitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

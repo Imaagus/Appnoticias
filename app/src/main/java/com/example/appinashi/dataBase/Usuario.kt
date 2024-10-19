@@ -1,4 +1,4 @@
-package com.example.appinashi
+package com.example.appinashi.dataBase
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

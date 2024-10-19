@@ -1,4 +1,4 @@
-package com.example.appinashi
+package com.example.appinashi.apiRequest
 
 data class Pagination(
     val limit: Int,

@@ -14,7 +14,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.util.PatternsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
+import com.example.appinashi.dataBase.AppDataBase
+import com.example.appinashi.dataBase.Usuario
 
 
 class Registro : AppCompatActivity() {

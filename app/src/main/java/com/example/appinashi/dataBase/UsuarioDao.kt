@@ -1,8 +1,7 @@
-package com.example.appinashi
+package com.example.appinashi.dataBase
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.appinashi.Usuario
 
 @Dao
 interface UsuarioDao {

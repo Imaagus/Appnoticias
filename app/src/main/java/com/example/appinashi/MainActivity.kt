@@ -12,11 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import android.os.Handler
 import android.os.Looper
+import com.example.appinashi.apiRequest.PostEndPoint
+import com.example.appinashi.apiRequest.RetroFitClient
 
 class MainActivity : AppCompatActivity() {
     private lateinit var toolBar: Toolbar
