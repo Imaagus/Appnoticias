@@ -10,7 +10,7 @@
         android:id="@+id/btnFragmento1"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/negocio"
+        android:src="@drawable/negocioo"
         android:backgroundTint="@color/principal"
         android:layout_margin="2dp"/>
 
@@ -18,14 +18,14 @@
         android:id="@+id/btnFragmento2"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/entretenimiento"
+        android:src="@drawable/entretenimientoo"
         android:backgroundTint="@color/principal"
         android:layout_margin="3dp"/>
     <ImageButton
         android:id="@+id/btnFragmento3"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/salud"
+        android:src="@drawable/saludd"
         android:backgroundTint="@color/principal"
         android:layout_margin="3dp"/>
     <ImageButton
@@ -46,7 +46,7 @@
         android:id="@+id/btnFragmento6"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/tecnologia"
+        android:src="@drawable/tecnologiaa"
         android:backgroundTint="@color/principal"
         android:layout_margin="3dp"/>
 
