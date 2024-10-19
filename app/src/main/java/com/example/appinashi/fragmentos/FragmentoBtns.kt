@@ -22,31 +22,55 @@ class FragmentoBtns : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //return inflater.inflate(R.layout.primer_fragmento, container, false)
         val view = inflater.inflate(R.layout.fragmento_btns, container, false)
         btnMostrarContenido1 = view.findViewById(R.id.btnFragmento1)
         btnMostrarContenido1.setOnClickListener {
-            listener?.mostrarContenido(Fragmento1())
+            val fragment = Fragmento1()
+            val bundle = Bundle()
+            bundle.putString("categoria", "business")
+            fragment.arguments = bundle
+            listener?.mostrarContenido(fragment)
         }
+
         btnMostrarContenido2 = view.findViewById(R.id.btnFragmento2)
         btnMostrarContenido2.setOnClickListener {
-            listener?.mostrarContenido(Fragmento2())
+            val fragment = Fragmento2()
+            val bundle = Bundle()
+            bundle.putString("categoria", "entertainment")
+            fragment.arguments = bundle
+            listener?.mostrarContenido(fragment)
         }
         btnMostrarContenido3 = view.findViewById(R.id.btnFragmento3)
         btnMostrarContenido3.setOnClickListener {
-            listener?.mostrarContenido(Fragmento3())
+            val fragment = Fragmento3()
+            val bundle = Bundle()
+            bundle.putString("categoria", "health")
+            fragment.arguments = bundle
+            listener?.mostrarContenido(fragment)
         }
         btnMostrarContenido4 = view.findViewById(R.id.btnFragmento4)
         btnMostrarContenido4.setOnClickListener {
-            listener?.mostrarContenido(Fragmento4())
+            val fragment = Fragmento4()
+            val bundle = Bundle()
+            bundle.putString("categoria", "science")
+            fragment.arguments = bundle
+            listener?.mostrarContenido(fragment)
         }
         btnMostrarContenido5 = view.findViewById(R.id.btnFragmento5)
         btnMostrarContenido5.setOnClickListener {
-            listener?.mostrarContenido(Fragmento5())
+            val fragment = Fragmento5()
+            val bundle = Bundle()
+            bundle.putString("categoria", "sports")
+            fragment.arguments = bundle
+            listener?.mostrarContenido(fragment)
         }
         btnMostrarContenido6 = view.findViewById(R.id.btnFragmento6)
         btnMostrarContenido6.setOnClickListener {
-            listener?.mostrarContenido(Fragmento6())
+            val fragment = Fragmento6()
+            val bundle = Bundle()
+            bundle.putString("categoria", "technology")
+            fragment.arguments = bundle
+            listener?.mostrarContenido(fragment)
         }
         return view
     }
