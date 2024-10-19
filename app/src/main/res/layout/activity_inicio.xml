@@ -26,7 +26,8 @@
         android:text="Crear Usuario"
         android:layout_marginBottom="16dp"
         android:layout_marginHorizontal="50sp"
-        android:backgroundTint="@color/principal"/>
+        android:backgroundTint="@color/principal"
+        android:fontFamily="serif"/>
 
     <Button
         android:id="@+id/btnIniciarSesion"
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:text="Iniciar Sesion"
         android:layout_marginHorizontal="50sp"
-        android:backgroundTint="@color/principal"/>
+        android:backgroundTint="@color/principal"
+        android:fontFamily="serif"/>
 
 </LinearLayout>

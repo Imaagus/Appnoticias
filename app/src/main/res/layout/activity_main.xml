@@ -28,13 +28,15 @@
                 android:id="@+id/tvRestService"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="serif"/>
 
             <TextView
                 android:id="@+id/tvDescrip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="serif"/>
 
 
         </LinearLayout>

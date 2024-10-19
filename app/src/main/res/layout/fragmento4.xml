@@ -13,7 +13,8 @@
         android:textSize="30sp"
         android:textColor="@color/terciario"
         android:layout_margin="10dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -31,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:text="Esperando datos..."
                 android:textSize="16sp"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:fontFamily="serif"/>
         </LinearLayout>
     </ScrollView>
 

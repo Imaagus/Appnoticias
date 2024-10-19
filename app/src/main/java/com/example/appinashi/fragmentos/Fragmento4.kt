@@ -30,7 +30,7 @@ class Fragmento4 : Fragment() {
 
         val categoria = arguments?.getString("categoria") ?: "general"
 
-        val accessKey = "1f196924ee3db7bcd5de96a6ba5945f0"
+        val accessKey = "c3f33b4128b6af38e8dd130281c5c8a0"
         val countries = "ar,us,gb"
         val language = "es, en"
 

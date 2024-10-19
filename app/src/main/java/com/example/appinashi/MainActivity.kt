@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.os.Handler
 import android.os.Looper
+import androidx.core.content.res.ResourcesCompat
 import com.example.appinashi.apiRequest.PostEndPoint
 import com.example.appinashi.apiRequest.RetroFitClient
 
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // Llamada a la API
-        val accessKey = "1f196924ee3db7bcd5de96a6ba5945f0"
+        val accessKey = "c3f33b4128b6af38e8dd130281c5c8a0"
         val countries = "ar"
         val language = "es"
         val category = "general"
