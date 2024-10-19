@@ -9,4 +9,10 @@
     <string name="sp_credenciales">CREDENCIALES</string>
     <string name="tituloUltimasNoticias">"Ultimas noticias "</string>
     <string name="categoriaNoticias">Categoria Noticicas</string>
+    <string name="Negocio">NEGOCIO</string>
+    <string name="Entretenimiento">ENTRETENIMIENTO</string>
+    <string name="salud">SALUD</string>
+    <string name="ciencia">CIENCIA</string>
+    <string name="deporte">DEPORTE</string>
+    <string name="tecnologia">TECNOLOGÍA</string>
 </resources>

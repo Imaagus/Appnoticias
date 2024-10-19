@@ -8,40 +8,47 @@
 
     <ImageButton
         android:id="@+id/btnFragmento1"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@android:drawable/btn_star_big_on"
-        android:backgroundTint="#D10000" />
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/negocio"
+        android:backgroundTint="@color/principal"
+        android:layout_margin="2dp"/>
+
     <ImageButton
         android:id="@+id/btnFragmento2"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@android:drawable/btn_star_big_on"
-        android:backgroundTint="#0018D1" />
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/entretenimiento"
+        android:backgroundTint="@color/principal"
+        android:layout_margin="3dp"/>
     <ImageButton
         android:id="@+id/btnFragmento3"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@android:drawable/btn_star_big_on"
-        android:backgroundTint="#5BD100" />
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/salud"
+        android:backgroundTint="@color/principal"
+        android:layout_margin="3dp"/>
     <ImageButton
         android:id="@+id/btnFragmento4"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@android:drawable/btn_star_big_on"
-        android:backgroundTint="#D100AE" />
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ciencia"
+        android:backgroundTint="@color/principal"
+        android:layout_margin="3dp"/>
     <ImageButton
         android:id="@+id/btnFragmento5"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@android:drawable/btn_star_big_on"
-        android:backgroundTint="#D1AE00" />
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/deporte"
+        android:backgroundTint="@color/principal"
+        android:layout_margin="3dp"/>
     <ImageButton
         android:id="@+id/btnFragmento6"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@android:drawable/btn_star_big_on"
-        android:backgroundTint="#00D199" />
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/tecnologia"
+        android:backgroundTint="@color/principal"
+        android:layout_margin="3dp"/>
 
 
 

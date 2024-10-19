@@ -19,7 +19,7 @@
         class="com.example.appinashi.fragmentos.FragmentoBtns"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"/>
+        android:layout_weight="0.25"/>
     <FrameLayout
         android:id="@+id/contenedor_segundo_fragmento"
         android:layout_width="match_parent"
